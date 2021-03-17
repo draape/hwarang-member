@@ -1,3 +1,9 @@
+const isProduction = process.env.NODE_ENV === "production";
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "hwarang-member",
@@ -6,8 +12,11 @@ module.exports = {
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: "h630w8u0",
-        dataset: "production",
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN,
+        watchMode: !isProduction,
+        overlayDrafts: !isProduction,
       },
     },
     "gatsby-plugin-sass",
@@ -22,5 +31,6 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-typescript",
   ],
 };
