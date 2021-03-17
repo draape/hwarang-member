@@ -22,12 +22,6 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "subtitle",
-      title: "Undertittel",
-      type: "string",
-      validation: (Rule) => Rule.max(80),
-    },
-    {
       name: "image",
       title: "Bilde",
       type: "extendedImage",
