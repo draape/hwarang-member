@@ -22,7 +22,7 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "id",
+      name: "videoId",
       title: "Video ID",
       description: "Vimeo video id",
       type: "number",

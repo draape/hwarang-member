@@ -9,7 +9,6 @@ interface PageProps {
   data: {
     page: {
       title: string;
-      subtitle: string;
       text: any | any[];
       image: {
         asset: any;
@@ -41,7 +40,6 @@ export const query = graphql`
   query Page($slug: String) {
     page: sanityPage(slug: { current: { eq: $slug } }) {
       title
-      subtitle
       slug {
         current
       }
