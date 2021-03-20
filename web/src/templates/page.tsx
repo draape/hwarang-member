@@ -19,11 +19,11 @@ interface PageProps {
 }
 
 const Page: React.FC<PageProps> = ({ data: { page } }) => {
-  const image = getImage(page.image.asset);
+  const image = getImage(page.image?.asset);
   return (
     <main>
       <h1>{page.title}</h1>
-      <GatsbyImage image={image} alt={page.image.alt} />
+      {image && <GatsbyImage image={image} alt={page.image.alt} />}
       <BlockContent
         blocks={page.text}
         serializers={{
