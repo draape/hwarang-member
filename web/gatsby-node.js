@@ -9,6 +9,11 @@ exports.createPages = async ({ graphql, actions }) => {
           slug {
             current
           }
+          category {
+            slug {
+              current
+            }
+          }
         }
       }
       allSanityVideo {
@@ -37,6 +42,22 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/video.tsx`),
       context: {
         slug: video.slug.current,
+      },
+    });
+  });
+
+  const categories = result.data.allSanityPage.nodes.map(
+    (page) => page.category?.slug?.current
+  );
+
+  const distinctCategories = [...new Set(categories)];
+
+  distinctCategories.forEach((category) => {
+    createPage({
+      path: `kategori/${category}`,
+      component: path.resolve(`./src/templates/category.tsx`),
+      context: {
+        slug: category,
       },
     });
   });
