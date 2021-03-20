@@ -13,8 +13,8 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: "Slug",
       name: "slug",
+      title: "Slug",
       type: "slug",
       options: {
         source: (doc, options) => options.parent.title,
@@ -28,8 +28,8 @@ export default {
     },
     {
       name: "text",
-      type: "array",
       title: "Tekst",
+      type: "array",
       of: [
         {
           type: "block",
@@ -38,6 +38,12 @@ export default {
           type: "extendedImage",
         },
       ],
+    },
+    {
+      name: "category",
+      title: "Kategori",
+      type: "reference",
+      to: [{ type: "category" }],
     },
   ],
 };
