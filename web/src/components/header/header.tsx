@@ -33,6 +33,9 @@ const Header: React.FC = () => {
           <li>
             <Link to="/">Forsiden</Link>
           </li>
+          <li>
+            <Link to="/video-gallery">Videoer</Link>
+          </li>
           {result.sanitySiteSettings.menu.map((item, i) => (
             <li key={i}>
               <Link to={buildLink(item.slug.current, item.type)}>

@@ -53,6 +53,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const distinctCategories = [...new Set(categories)];
 
   distinctCategories.forEach((category) => {
+    if (category === undefined) {
+      console.warn("Undefined category");
+      return;
+    }
     createPage({
       path: `kategori/${category}`,
       component: path.resolve(`./src/templates/category.tsx`),
