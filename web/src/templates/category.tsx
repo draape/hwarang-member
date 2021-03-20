@@ -1,6 +1,8 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 
+import Layout from "../components/layout/layout";
+
 interface CategoryProps {
   data: {
     category: {
@@ -18,7 +20,7 @@ interface CategoryProps {
 }
 
 const Category: React.FC<CategoryProps> = ({ data: { category, links } }) => (
-  <main>
+  <Layout>
     <h1>{category.title}</h1>
     <ul>
       {links.nodes.map((link, i) => (
@@ -27,7 +29,7 @@ const Category: React.FC<CategoryProps> = ({ data: { category, links } }) => (
         </li>
       ))}
     </ul>
-  </main>
+  </Layout>
 );
 
 export const query = graphql`

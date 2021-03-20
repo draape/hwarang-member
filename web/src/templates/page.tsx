@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import BlockContent from "@sanity/block-content-to-react";
 
+import Layout from "../components/layout/layout";
 import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
 
 interface PageProps {
@@ -21,18 +22,20 @@ interface PageProps {
 const Page: React.FC<PageProps> = ({ data: { page } }) => {
   const image = getImage(page.image?.asset);
   return (
-    <main>
+    <Layout>
       <h1>{page.title}</h1>
       {image && <GatsbyImage image={image} alt={page.image.alt} />}
-      <BlockContent
-        blocks={page.text}
-        serializers={{
-          types: {
-            extendedImage: SanityImageBlock,
-          },
-        }}
-      />
-    </main>
+      {page.text && (
+        <BlockContent
+          blocks={page.text}
+          serializers={{
+            types: {
+              extendedImage: SanityImageBlock,
+            },
+          }}
+        />
+      )}
+    </Layout>
   );
 };
 
