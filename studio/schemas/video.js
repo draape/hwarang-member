@@ -22,6 +22,13 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "category",
+      title: "Kategori",
+      type: "reference",
+      to: [{ type: "category" }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "videoId",
       title: "Video ID",
       description: "Vimeo video id",
