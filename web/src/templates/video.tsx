@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import BlockContent from "@sanity/block-content-to-react";
 
 import Layout from "../components/layout/layout";
@@ -44,4 +45,4 @@ export const query = graphql`
   }
 `;
 
-export default Video;
+export default withAuthenticationRequired(Video);

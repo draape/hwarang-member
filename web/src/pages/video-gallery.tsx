@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { graphql, Link } from "gatsby";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import { getDistinctCategories } from "../utils/get-distinct-categories";
 
@@ -71,4 +72,4 @@ export const query = graphql`
   }
 `;
 
-export default VideoGallery;
+export default withAuthenticationRequired(VideoGallery);
