@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Layout from "../components/layout/layout";
 
@@ -50,4 +51,4 @@ export const query = graphql`
   }
 `;
 
-export default Category;
+export default withAuthenticationRequired(Category);

@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import BlockContent from "@sanity/block-content-to-react";
 
 import Layout from "../components/layout/layout";
@@ -57,4 +58,4 @@ export const query = graphql`
   }
 `;
 
-export default Page;
+export default withAuthenticationRequired(Page);
