@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header: React.FC = () => {
   const result = useStaticQuery(
@@ -26,6 +27,8 @@ const Header: React.FC = () => {
     `
   );
 
+  const { logout } = useAuth0();
+
   return (
     <header>
       <nav>
@@ -43,6 +46,13 @@ const Header: React.FC = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <button
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              Logg ut
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
