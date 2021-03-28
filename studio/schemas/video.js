@@ -33,6 +33,7 @@ export default {
       title: "Video ID",
       description: "Vimeo video id",
       type: "number",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "text",
