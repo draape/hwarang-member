@@ -125,3 +125,21 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        components: path.resolve(__dirname, "src/components"),
+      },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.scss/,
+          loader: "import-glob-loader",
+        },
+      ],
+    },
+  });
+};

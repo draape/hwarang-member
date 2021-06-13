@@ -32,5 +32,6 @@ module.exports = {
       __key: "images",
     },
     "gatsby-plugin-typescript",
+    "gatsby-plugin-react-helmet",
   ],
 };

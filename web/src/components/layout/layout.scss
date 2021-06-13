@@ -1,0 +1,10 @@
+.layout {
+  max-width: 48rem;
+  margin: 0 auto;
+
+  &__content {
+    padding: 3rem;
+    background-color: $color--white;
+    box-shadow: 0 2px 4px 0 $color--black-a10;
+  }
+}

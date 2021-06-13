@@ -2,6 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import Logo from "../../images/logo-web.svg";
+
 const Header: React.FC = () => {
   const result = useStaticQuery(
     graphql`
@@ -30,7 +32,18 @@ const Header: React.FC = () => {
   const { logout } = useAuth0();
 
   return (
-    <header>
+    <header className="header">
+      <a className="header__logo" href="/">
+        <img
+          className="header__logo-image"
+          src={Logo}
+          alt="Hwa Rang Taekwondo"
+        />
+        <div className="header__logo-text">
+          <span className="header__logo-title">Hwa Rang</span>
+          <span className="header__logo-subtitle">Medlemssider</span>
+        </div>
+      </a>
       <nav>
         <ul>
           <li>

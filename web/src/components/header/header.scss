@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color--black-600;
+
+    &-image {
+      height: 5.5rem;
+      margin-right: 1rem;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    &-title {
+      font-family: KlavikaBold, sans-serif;
+      font-size: $font-size--36;
+      font-weight: 700;
+    }
+
+    &-subtitle {
+      font-family: KlavikaLight, sans-serif;
+      font-size: $font-size--24;
+      font-weight: 300;
+    }
+  }
+}

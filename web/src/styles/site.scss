@@ -1,0 +1,40 @@
+@import "typography";
+@import "variables";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $color--gray-0;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 100%;
+  color: $color--black;
+  line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: KlavikaBold, sans-serif;
+  color: $color--black-600;
+  font-weight: 700;
+  text-align: center;
+}
+
+h1 {
+  font-size: $font-size--36;
+  margin: 2rem 0;
+}
+
+h2 {
+  font-size: $font-size--28;
+}
+
+p {
+  margin: 1rem 0 0;
+}
+
+@import "../components/**/*.scss";

@@ -4,3 +4,5 @@ declare namespace NodeJS {
     GATSBY_AUTH0_CLIENTID: string;
   }
 }
+
+declare module "*.svg";
