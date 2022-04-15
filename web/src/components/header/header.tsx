@@ -39,16 +39,12 @@ const Header: React.FC = () => {
         <img
           className="header__logo-image"
           src={Logo}
-          alt="Hwa Rang Taekwondo"
+          alt="Hwa Rang Taekwondo Medlemssider"
         />
-        <div className="header__logo-text">
-          <span className="header__logo-title">Hwa Rang</span>
-          <span className="header__logo-subtitle">Medlemssider</span>
-        </div>
       </a>
-      <nav>
+      <nav className="header__navigation">
         <GweBurger />
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/">Forsiden</Link>
           </li>
@@ -69,7 +65,7 @@ const Header: React.FC = () => {
               Logg ut
             </button>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </header>
   );

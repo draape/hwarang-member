@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 import Header from "../header/header";
+import { Footer } from "../footer/footer";
 
 import favicon from "../../images/favicon.svg";
 import "../../styles/site.scss";
@@ -18,6 +19,7 @@ const Layout: React.FC = ({ children }) => (
     </Helmet>
     <Header />
     <main className="layout__content">{children}</main>
+    <Footer />
   </div>
 );
 

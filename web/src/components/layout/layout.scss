@@ -1,9 +1,12 @@
 .layout {
-  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: $page-width;
   margin: 0 auto;
+  padding: 0 $spacing-sm;
 
   &__content {
-    padding: 3rem;
-    background-color: $color--white;
+    flex-grow: 1;
   }
 }

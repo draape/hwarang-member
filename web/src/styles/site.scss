@@ -8,4 +8,8 @@ body {
   background-color: $color--white;
 }
 
+::selection {
+  background: $color--light-blue;
+}
+
 @import "../components/**/*.scss";
