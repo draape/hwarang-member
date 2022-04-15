@@ -1,0 +1,92 @@
+@keyframes top {
+  20%  {transform: translateY(0.625rem);}
+  100% {transform: translateY(0.625rem) rotate(-45deg);}
+}
+
+@keyframes bottom {
+  20%  {transform: translateY(-0.625rem);}
+  100% {transform: translateY(-0.625rem) rotate(-45deg);}
+}
+
+@mixin gwe-branch($isLeft: true) {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 100%;
+  background-color: $color--black;
+  position: absolute;
+  top: 0;
+  @if $isLeft {
+    left: 0;
+  }
+  @else {
+    right: 0;
+  }
+  transition: width .22s cubic-bezier(.215,.61,.355,1);
+}
+
+@mixin split-gwe {
+  &::before {
+    @include gwe-branch(true);
+  }
+
+  &::after {
+    @include gwe-branch(false);
+  }
+}
+
+.gwe-burger {
+  display: inline-block;
+  overflow: visible;
+  cursor: pointer;
+  text-transform: none;
+  color: inherit;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  width: 2rem;
+  height: 1.5rem;
+
+  &__a, &__b, &__c {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    width: 2rem;
+    height: 0.25rem;
+    transition: transform .22s cubic-bezier(.215,.61,.355,1);
+  }
+
+  &__a {
+    top: 0;
+    @include split-gwe();
+  }
+
+  &__b {
+    top: 0.625rem;
+    background-color: $color--black;
+  }
+
+  &__c {
+    top: 1.25rem;
+    @include split-gwe();
+  }
+
+  &--is-active &__b {
+    transform: rotate(-135deg);
+  }
+
+  &--is-active &__a {
+    animation: top .22s ease-in-out 0s 1 forwards;
+  }
+
+  &--is-active &__c {
+    animation: bottom .22s ease-in-out 0s 1 forwards;
+  }
+
+  &:not(&--is-active):hover &__a::before,
+  &:not(&--is-active):hover &__a::after,
+  &:not(&--is-active):hover &__c::before,
+  &:not(&--is-active):hover &__c::after {
+    width: 0.75rem;
+  }
+}

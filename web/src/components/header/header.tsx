@@ -2,6 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import GweBurger from "../gwe-burger/gwe-burger";
+
 import Logo from "../../images/logo-web.svg";
 
 const Header: React.FC = () => {
@@ -45,6 +47,7 @@ const Header: React.FC = () => {
         </div>
       </a>
       <nav>
+        <GweBurger />
         <ul>
           <li>
             <Link to="/">Forsiden</Link>
