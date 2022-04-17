@@ -12,6 +12,7 @@ const GweBurger: React.FC = () => {
         setIsOpen(!isOpen);
       }}
     >
+      <p className="gwe-burger__label">{isOpen ? "Lukk" : "Meny"}</p>
       <span className="gwe-burger__a"></span>
       <span className="gwe-burger__b"></span>
       <span className="gwe-burger__c"></span>

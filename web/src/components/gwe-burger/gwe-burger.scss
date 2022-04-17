@@ -45,13 +45,34 @@
   border: 0;
   background-color: transparent;
   position: relative;
-  width: 2rem;
+  width: 7rem;
   height: 1.5rem;
+
+  &__label {
+    position: relative;
+    right: $spacing-sm;
+    top: -0.25rem;
+    user-select: none;
+    display: inline-block;
+  }
+
+  &__label::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background: $color--medium-blue;
+    transition: width 100ms;
+  }
+
+  &:hover &__label::after {
+    width: 100%;
+  }
 
   &__a, &__b, &__c {
     display: inline-block;
     position: absolute;
-    left: 0;
+    right: 0;
     width: 2rem;
     height: 0.25rem;
     transition: transform .22s cubic-bezier(.215,.61,.355,1);
