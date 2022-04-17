@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MenuContext } from "../../contexts/menu-context";
 
 const GweBurger: React.FC = () => {
-  const [isActive, setIsActive] = useState(false);
+  const { isOpen, setIsOpen } = useContext(MenuContext);
+
   return (
     <button
-      className={`gwe-burger ${isActive ? "gwe-burger--is-active" : ""}`}
+      className={`gwe-burger ${isOpen ? "gwe-burger--is-active" : ""}`}
       type="button"
-      onClick={() => setIsActive(!isActive)}
+      onClick={() => {
+        setIsOpen(!isOpen);
+      }}
     >
       <span className="gwe-burger__a"></span>
       <span className="gwe-burger__b"></span>

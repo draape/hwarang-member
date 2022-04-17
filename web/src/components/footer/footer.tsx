@@ -2,8 +2,12 @@ import React, { FC } from "react";
 
 import { Link } from "../link/link";
 
-export const Footer: FC = () => (
-  <footer className="footer">
+type FooterProps = {
+  className?: string;
+};
+
+export const Footer: FC<FooterProps> = ({ className }) => (
+  <footer className={`footer ${className}`}>
     <p>
       Har du funnet feil på siden eller har tilbakemeldinger på innholdet? Send
       en melding til{" "}

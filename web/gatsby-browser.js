@@ -1,6 +1,7 @@
 import React from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { navigate } from "gatsby";
+import { MenuProvider } from "./src/contexts/menu-context";
 
 const onRedirectCallback = (appState) => {
   // Use Gatsby's navigate method to replace the url
@@ -15,7 +16,7 @@ export const wrapRootElement = ({ element }) => {
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      {element}
+      <MenuProvider>{element}</MenuProvider>
     </Auth0Provider>
   );
 };

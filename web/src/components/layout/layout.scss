@@ -9,4 +9,13 @@
   &__content {
     flex-grow: 1;
   }
+
+  &--blur &__content, &--blur &__footer {
+    transition: filter 100ms ease;
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+  }
 }

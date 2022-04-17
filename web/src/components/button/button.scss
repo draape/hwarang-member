@@ -1,0 +1,21 @@
+.button {
+  background-color: $color--dark-blue;
+  color: $color--white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: $spacing-sm $spacing-md;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: $font-size--18;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    background-color: $color--blue;
+  }
+
+  &:focus {
+    outline: 3px solid $color--medium-blue;
+    outline-offset: 2px;
+  }
+}

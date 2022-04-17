@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: $spacing-md;
-  margin-bottom: $spacing-lg;
 
   &__logo {
     display: flex;
@@ -14,9 +13,14 @@
       height: 5.5rem;
       margin-right: 1rem;
     }
-  }
 
-  &__navigation {
-    margin-top: 0.75rem;
+    &--blur {
+      transition: filter 100ms ease;
+      -webkit-filter: blur(8px);
+      -moz-filter: blur(8px);
+      -o-filter: blur(8px);
+      -ms-filter: blur(8px);
+      filter: blur(8px);
+    }
   }
 }
