@@ -7,6 +7,7 @@
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: $font-size--18;
+  line-height: 1;
   cursor: pointer;
   transition: all 100ms ease-in-out;
 
@@ -17,5 +18,26 @@
   &:focus {
     outline: 3px solid $color--medium-blue;
     outline-offset: 2px;
+  }
+
+  &--pill {
+    color: $color--black;
+    background-color: transparent;
+  }
+
+  &--pillselected {
+    background-color: $color--blue;
+    color: $color--white;
+  }
+
+  &--pill, &--pillselected {
+    border-radius: 2rem;
+    padding: $spacing-xs $spacing-sm;
+    font-weight: 400;
+
+    &:hover {
+      color: $color--black;
+      background-color: $color--light-blue;
+    }
   }
 }

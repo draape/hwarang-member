@@ -6,6 +6,7 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { getDistinctCategories } from "../utils/get-distinct-categories";
 
 import Layout from "../components/layout/layout";
+import { FacetList } from "../components/facet-list/facet-list";
 
 interface VideoGalleryProps {
   data: {
@@ -25,27 +26,21 @@ const VideoGallery: React.FC<VideoGalleryProps> = ({
     allSanityVideo: { videos },
   },
 }) => {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState<string>();
   const categories = getDistinctCategories(videos);
+
+  const onSelect = (value: string) => setCategory(value);
+
   return (
     <Layout>
       <h1>Videoer</h1>
-      <ul>
-        <li>
-          <button onClick={() => setCategory("")}>Alle</button>
-        </li>
-        {categories.map((cat, i) => (
-          <li key={i}>
-            <button onClick={() => setCategory(cat.slug)}>{cat.title}</button>
-          </li>
-        ))}
-      </ul>
+      <FacetList categories={categories} onSelect={onSelect} />
       {videos.map((video, i) => {
         const image = getImage(video.thumbnail);
         return (
-          (category === "" || category === video.category.slug.current) && (
+          (category === null || category === video.category.slug.current) && (
             <div key={i}>
-              <GatsbyImage image={image} alt={video.title} />
+              {image && <GatsbyImage image={image} alt={video.title} />}
               <h2>
                 <Link to={`/video/${video.slug.current}`}>{video.title}</Link>
               </h2>
