@@ -1,0 +1,10 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: $break-point--sm) {
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
