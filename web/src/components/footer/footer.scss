@@ -1,8 +1,13 @@
 .footer {
   border-top: 1px solid $color--black;
   padding-top: $spacing-md;
+  margin-top: $spacing-xl;
   
   p {
     font-size: $font-size--14;
+  }
+
+  @media screen and (min-width: $break-point--sm) {
+    margin-top: $spacing-2xl;
   }
 }

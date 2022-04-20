@@ -7,6 +7,7 @@ import { getDistinctCategories } from "../utils/get-distinct-categories";
 
 import Layout from "../components/layout/layout";
 import { FacetList } from "../components/facet-list/facet-list";
+import { Card } from "../components/card/card";
 
 interface VideoGalleryProps {
   data: {
@@ -35,17 +36,18 @@ const VideoGallery: React.FC<VideoGalleryProps> = ({
     <Layout>
       <h1>Videoer</h1>
       <FacetList categories={categories} onSelect={onSelect} />
-      {videos.map((video, i) => {
+      {videos.map((video) => {
         const image = getImage(video.thumbnail);
         return (
           (category === null || category === video.category.slug.current) && (
-            <div key={i}>
-              {image && <GatsbyImage image={image} alt={video.title} />}
-              <h2>
-                <Link to={`/video/${video.slug.current}`}>{video.title}</Link>
-              </h2>
-              <span>{video.category.title}</span>
-            </div>
+            <Card
+              key={video.slug.current}
+              title={video.title}
+              subtitle={video.category.title}
+              link={`/video/${video.slug.current}`}
+              image={image}
+              imageAlt={video.title}
+            />
           )
         );
       })}
