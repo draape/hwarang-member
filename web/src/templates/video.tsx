@@ -6,6 +6,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import Layout from "../components/layout/layout";
 import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
 import VimeoVideo from "../components/vimeo-video/vimeo-video";
+import { Container } from "../components/container/container";
 
 interface VideoProps {
   data: {
@@ -21,14 +22,16 @@ const Video: React.FC<VideoProps> = ({ data: { video } }) => (
   <Layout>
     <h1>{video.title}</h1>
     <VimeoVideo id={video.videoId} title={video.title} />
-    <BlockContent
-      blocks={video.text}
-      serializers={{
-        types: {
-          extendedImage: SanityImageBlock,
-        },
-      }}
-    />
+    <Container>
+      <BlockContent
+        blocks={video.text}
+        serializers={{
+          types: {
+            extendedImage: SanityImageBlock,
+          },
+        }}
+      />
+    </Container>
   </Layout>
 );
 

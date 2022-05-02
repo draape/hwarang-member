@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { graphql, Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import { getDistinctCategories } from "../utils/get-distinct-categories";
