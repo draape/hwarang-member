@@ -62,8 +62,7 @@ strong {
   font-size: $font-size--18;
   font-weight: 300;
   line-height: 1.4;
-  margin-top: $spacing-xs;
-  margin-bottom: $spacing-xs;
+  margin-top: $spacing-sm;
 
   @media screen and (min-width: $break-point--sm) {
     font-size: $font-size--19;

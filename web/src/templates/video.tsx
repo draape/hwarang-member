@@ -7,6 +7,7 @@ import Layout from "../components/layout/layout";
 import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
 import VimeoVideo from "../components/vimeo-video/vimeo-video";
 import { Container } from "../components/container/container";
+import { SanityGweBlock } from "../components/sanity-gwe-block/sanity-gwe-block";
 
 interface VideoProps {
   data: {
@@ -28,6 +29,7 @@ const Video: React.FC<VideoProps> = ({ data: { video } }) => (
         serializers={{
           types: {
             extendedImage: SanityImageBlock,
+            gwe: SanityGweBlock,
           },
         }}
       />
