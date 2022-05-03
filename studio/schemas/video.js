@@ -46,6 +46,20 @@ export default {
         {
           type: "extendedImage",
         },
+        {
+          type: "gwe",
+        },
+      ],
+    },
+    {
+      name: "techniques",
+      title: "Teknikker",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "technique" }],
+        },
       ],
     },
   ],

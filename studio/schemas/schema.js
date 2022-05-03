@@ -6,11 +6,14 @@ import Page from "./page";
 import ExtendedImage from "./extended-image";
 import Video from "./video";
 import Category from "./category";
+import Technique from "./technique";
 import Quiz from "./quiz";
 import Player from "./player";
 import Answer from "./answer";
 import Choice from "./choice";
 import Question from "./question";
+
+import Gwe from "./objects/gwe";
 
 export default createSchema({
   name: "default",
@@ -20,10 +23,13 @@ export default createSchema({
     ExtendedImage,
     Video,
     Category,
+    Technique,
     Quiz,
     Player,
     Answer,
     Choice,
     Question,
+
+    Gwe,
   ]),
 });
