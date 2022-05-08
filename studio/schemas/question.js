@@ -21,20 +21,7 @@ export default {
     {
       name: "image",
       title: "Bilde",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternativ tekst",
-          options: {
-            isHighlighted: true,
-          },
-        },
-      ],
+      type: "extendedImage",
     },
     {
       name: "choices",

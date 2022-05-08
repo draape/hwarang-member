@@ -8,6 +8,7 @@ import SanityImageBlock from "../components/sanity-image-block/sanity-image-bloc
 import VimeoVideo from "../components/vimeo-video/vimeo-video";
 import { Container } from "../components/container/container";
 import { SanityGweBlock } from "../components/sanity-gwe-block/sanity-gwe-block";
+import { TechniqueList } from "../components/technique-list/technique-list";
 
 interface VideoProps {
   data: {
@@ -15,6 +16,7 @@ interface VideoProps {
       videoId: number;
       title: string;
       text: any | any[];
+      techniques?: { name: string }[];
     };
   };
 }
@@ -33,6 +35,9 @@ const Video: React.FC<VideoProps> = ({ data: { video } }) => (
           },
         }}
       />
+      {video.techniques && video.techniques.length > 0 && (
+        <TechniqueList techniques={video.techniques} />
+      )}
     </Container>
   </Layout>
 );
@@ -46,6 +51,9 @@ export const query = graphql`
         current
       }
       text: _rawText
+      techniques {
+        name
+      }
     }
   }
 `;
