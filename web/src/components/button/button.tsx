@@ -6,6 +6,7 @@ export enum ButtonTheme {
   Button = 1,
   Pill = 2,
   PillSelected = 3,
+  Link = 4,
 }
 
 type ButtonProps = {

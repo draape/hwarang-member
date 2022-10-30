@@ -40,4 +40,16 @@
       background-color: $color--light-blue;
     }
   }
+
+  &--link {
+    all: unset;
+    text-decoration: none;
+    color: $color--black;
+
+    &:hover {
+      color: $color--blue;
+      background: none;
+      cursor: pointer;
+    }
+  }
 }

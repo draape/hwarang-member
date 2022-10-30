@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { MenuContext } from "../../contexts/menu-context";
-import { Button } from "../button/button";
+import { Button, ButtonTheme } from "../button/button";
 
 export const Menu: FC = () => {
   const { isOpen, setIsOpen } = useContext(MenuContext);
@@ -51,6 +51,7 @@ export const Menu: FC = () => {
         <li>
           <Button
             className="menu__logout"
+            theme={ButtonTheme.Link}
             onClick={() => logout({ returnTo: window.location.origin })}
           >
             Logg ut
