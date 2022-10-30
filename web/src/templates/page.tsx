@@ -6,6 +6,7 @@ import BlockContent from "@sanity/block-content-to-react";
 
 import Layout from "../components/layout/layout";
 import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
+import { Breadcrumb } from "../components/breadcrumb/breadcrumb";
 
 interface PageProps {
   data: {
@@ -16,14 +17,27 @@ interface PageProps {
         asset: any;
         alt: string;
       };
+      category?: {
+        title: string;
+        slug: {
+          current: string;
+        };
+      };
     };
   };
 }
 
 const Page: React.FC<PageProps> = ({ data: { page } }) => {
   const image = getImage(page.image?.asset);
+
   return (
     <Layout>
+      {page.category && (
+        <Breadcrumb
+          title={page.category.title}
+          href={`/kategori/${page.category?.slug.current}`}
+        />
+      )}
       <h1>{page.title}</h1>
       {image && <GatsbyImage image={image} alt={page.image.alt} />}
       {page.text && (
@@ -46,6 +60,12 @@ export const query = graphql`
       title
       slug {
         current
+      }
+      category {
+        title
+        slug {
+          current
+        }
       }
       image {
         asset {

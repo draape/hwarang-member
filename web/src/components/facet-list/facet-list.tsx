@@ -4,11 +4,11 @@ import { Button, ButtonTheme } from "../button/button";
 
 type FacetListProps = {
   categories: Category[];
-  onSelect: (value: string) => void;
+  onSelect: (value: string | null) => void;
 };
 
 export const FacetList: FC<FacetListProps> = ({ categories, onSelect }) => {
-  const [category, setCategory] = useState<string>();
+  const [category, setCategory] = useState<string | null>();
   return (
     <ul className="facet-list">
       <li className="facet-list__facet">
