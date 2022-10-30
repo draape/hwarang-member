@@ -28,7 +28,7 @@ const VideoGallery: React.FC<VideoGalleryProps> = ({
     allSanityVideo: { videos },
   },
 }) => {
-  const [category, setCategory] = useState<string>(null);
+  const [category, setCategory] = useState<string | null>(null);
   const categories = getDistinctCategories(videos);
 
   const onSelect = (value: string) => setCategory(value);

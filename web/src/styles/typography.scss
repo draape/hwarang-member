@@ -46,6 +46,15 @@ strong {
   font-weight: 600;
 }
 
+ol, ul {
+  font-size: $font-size--18;
+  line-height: 1.625;
+
+  @media screen and (min-width: $break-point--sm) {
+    font-size: $font-size--19;
+  }
+}
+
 @mixin title {
   font-size: $font-size--20;
   font-weight: 600;

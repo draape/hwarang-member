@@ -1,8 +1,10 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Layout from "../components/layout/layout";
+import { Card } from "../components/card/card";
+import { Grid } from "../components/grid/grid";
 
 interface CategoryProps {
   data: {
@@ -23,13 +25,11 @@ interface CategoryProps {
 const Category: React.FC<CategoryProps> = ({ data: { category, links } }) => (
   <Layout>
     <h1>{category.title}</h1>
-    <ul>
+    <Grid>
       {links.nodes.map((link, i) => (
-        <li key={i}>
-          <Link to={`/${link.slug.current}`}>{link.title}</Link>
-        </li>
+        <Card key={i} title={link.title} link={`/${link.slug.current}`} />
       ))}
-    </ul>
+    </Grid>
   </Layout>
 );
 
