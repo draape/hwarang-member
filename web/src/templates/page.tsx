@@ -7,6 +7,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import Layout from "../components/layout/layout";
 import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
 import { Breadcrumb } from "../components/breadcrumb/breadcrumb";
+import { Table } from "../components/table/table";
 
 interface PageProps {
   data: {
@@ -46,6 +47,7 @@ const Page: React.FC<PageProps> = ({ data: { page } }) => {
           serializers={{
             types: {
               extendedImage: SanityImageBlock,
+              table: ({ node }) => <Table rows={node.rows} />,
             },
           }}
         />

@@ -37,6 +37,9 @@ export default {
         {
           type: "extendedImage",
         },
+        {
+          type: "table",
+        },
       ],
     },
     {
