@@ -34,7 +34,7 @@ export const QuizLevel: FC<QuizLevelProps> = ({
   </div>
 );
 
-const mapGradeName = (grade: Grade) =>
+export const mapGradeName = (grade: Grade) =>
   ({
     [Grade.Cup10]: "10. cup",
     [Grade.Cup9]: "9. cup",
@@ -49,7 +49,7 @@ const mapGradeName = (grade: Grade) =>
     [Grade.Dan1]: "1. dan",
   }[grade]);
 
-const mapBeltColor = (grade: Grade): TagColor =>
+export const mapBeltColor = (grade: Grade): TagColor =>
   ({
     [Grade.Cup10]: TagColor.White,
     [Grade.Cup9]: TagColor.White,
