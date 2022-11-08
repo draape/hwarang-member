@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image";
 
 type CardProps = {
-  title: string;
+  title?: string;
   link?: string;
   subtitle?: string;
   image?: IGatsbyImageData;
@@ -16,6 +16,7 @@ export const Card: FC<CardProps> = ({
   link,
   image,
   imageAlt,
+  children,
 }) => {
   const cardContents = (
     <>
@@ -32,7 +33,7 @@ export const Card: FC<CardProps> = ({
       {link !== undefined ? (
         <Link to={link}>{cardContents}</Link>
       ) : (
-        cardContents
+        children || cardContents
       )}
     </div>
   );

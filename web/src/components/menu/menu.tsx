@@ -41,6 +41,9 @@ export const Menu: FC = () => {
         <li>
           <Link to="/video-gallery">Videoer</Link>
         </li>
+        <li>
+          <Link to="/quiz">Quiz</Link>
+        </li>
         {result.sanitySiteSettings.menu.map((item, i) => (
           <li key={i}>
             <Link to={buildLink(item.slug.current, item.type)}>

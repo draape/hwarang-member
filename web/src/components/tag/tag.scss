@@ -1,0 +1,34 @@
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  color: $color--white;
+  font-weight: 600;
+
+  &--white {
+    background-color: $color--white;
+    border: 1px solid $color--black;
+    color: $color--black;
+  }
+
+  &--yellow {
+    background-color: $color--yellow;
+    color: $color--black;
+  }
+
+  &--green {
+    background-color: $color--green;
+  }
+
+  &--blue {
+    background-color: $color--blue;
+  }
+
+  &--red {
+    background-color: $color--red;
+  }
+
+  &--black {
+    background-color: $color--black;
+  }
+}

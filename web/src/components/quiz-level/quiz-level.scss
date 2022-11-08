@@ -1,0 +1,39 @@
+.quiz-level {
+  text-align: left;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.progress {
+  width: 100%;
+
+  &__bg {
+    display: block;
+    background-color: $color--grey;
+    height: 0.625rem;
+    border-radius: 0.625rem;
+    overflow: hidden;
+  }
+
+  &__bar {
+    display: block;
+    background-color: $color--blue;
+    border-radius: 0.625rem;
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+    transition-delay: 0.2s;
+  }
+
+  &__text {
+    display: block;
+    font-weight: bold;
+    font-size: $font-size--18;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}
