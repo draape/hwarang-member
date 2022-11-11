@@ -15,6 +15,8 @@ export const wrapRootElement = ({ element }) => {
       clientId={process.env.GATSBY_AUTH0_CLIENTID}
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
+      useRefreshTokens={true}
+      cacheLocation="localstorage"
     >
       <MenuProvider>{element}</MenuProvider>
     </Auth0Provider>
