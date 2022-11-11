@@ -31,7 +31,9 @@ export const Card: FC<CardProps> = ({
   return (
     <div className="card">
       {link !== undefined ? (
-        <Link to={link}>{cardContents}</Link>
+        <Link to={link} className="card__link">
+          {cardContents}
+        </Link>
       ) : (
         children || cardContents
       )}

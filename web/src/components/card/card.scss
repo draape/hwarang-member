@@ -7,14 +7,14 @@
   overflow: hidden;
   // max-width: 20rem;
   
-  a {
+  &__link {
     color: $color--black;
     text-decoration: none;
     display: block;
     height: 100%;
   }
 
-  a img {
+  &__link img {
     // !important due to Gatsby Image transition
     transition: opacity .25s linear, transform 100ms ease-in-out !important;
   }
