@@ -9,10 +9,12 @@ import Category from "./category";
 import Technique from "./technique";
 import Quiz from "./quiz";
 import Player from "./player";
-import Answer from "./answer";
-import Choice from "./choice";
-import Question from "./question";
 
+import Answer from "./objects/answer";
+import Choice from "./objects/choice";
+import Question from "./objects/question";
+import MatchChoice from "./objects/match-choice";
+import MatchQuestion from "./objects/match-question";
 import Gwe from "./objects/gwe";
 
 export default createSchema({
@@ -29,6 +31,8 @@ export default createSchema({
     Answer,
     Choice,
     Question,
+    MatchChoice,
+    MatchQuestion,
 
     Gwe,
   ]),

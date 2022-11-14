@@ -1,6 +1,6 @@
 export default {
   name: "choice",
-  title: "Choice",
+  title: "Alternativ",
   type: "object",
   fields: [
     {
