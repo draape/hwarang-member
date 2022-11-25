@@ -5,16 +5,16 @@ import Layout from "../../components/layout/layout";
 import { Container } from "../../components/container/container";
 
 interface QuizPageProps {
-  data: { sanityQuiz: any };
+  data: { quiz: any };
 }
 
-const QuizPage: FC<QuizPageProps> = ({ data: { sanityQuiz } }) => {
+const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => {
   return (
     <Layout>
       <Container>
-        <h1>{sanityQuiz.title}</h1>
-        <p>{sanityQuiz.description}</p>
-        {sanityQuiz.questions.map((question) =>
+        <h1>{quiz.title}</h1>
+        <p>{quiz.description}</p>
+        {quiz.questions.map((question) =>
           question._type === "question" ? (
             <div>
               <h2>{question.title}</h2>
@@ -45,8 +45,8 @@ const QuizPage: FC<QuizPageProps> = ({ data: { sanityQuiz } }) => {
 };
 
 export const query = graphql`
-  query ($id: String!) {
-    sanityQuiz(id: { eq: $id }) {
+  query ($id: String) {
+    quiz: sanityQuiz(id: { eq: $id }) {
       title
       description
       questions {

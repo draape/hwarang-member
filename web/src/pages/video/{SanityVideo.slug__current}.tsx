@@ -1,14 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { graphql } from "gatsby";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import BlockContent from "@sanity/block-content-to-react";
 
-import Layout from "../components/layout/layout";
-import SanityImageBlock from "../components/sanity-image-block/sanity-image-block";
-import VimeoVideo from "../components/vimeo-video/vimeo-video";
-import { Container } from "../components/container/container";
-import { SanityGweBlock } from "../components/sanity-gwe-block/sanity-gwe-block";
-import { TechniqueList } from "../components/technique-list/technique-list";
+import Layout from "../../components/layout/layout";
+import SanityImageBlock from "../../components/sanity-image-block/sanity-image-block";
+import VimeoVideo from "../../components/vimeo-video/vimeo-video";
+import { Container } from "../../components/container/container";
+import { SanityGweBlock } from "../../components/sanity-gwe-block/sanity-gwe-block";
+import { TechniqueList } from "../../components/technique-list/technique-list";
 
 interface VideoProps {
   data: {
@@ -21,7 +21,7 @@ interface VideoProps {
   };
 }
 
-const Video: React.FC<VideoProps> = ({ data: { video } }) => (
+const Video: FC<VideoProps> = ({ data: { video } }) => (
   <Layout>
     <h1>{video.title}</h1>
     <VimeoVideo id={video.videoId} title={video.title} />
@@ -43,8 +43,8 @@ const Video: React.FC<VideoProps> = ({ data: { video } }) => (
 );
 
 export const query = graphql`
-  query Video($slug: String) {
-    video: sanityVideo(slug: { current: { eq: $slug } }) {
+  query ($id: String) {
+    video: sanityVideo(id: { eq: $id }) {
       videoId
       title
       slug {

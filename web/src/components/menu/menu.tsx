@@ -39,7 +39,7 @@ export const Menu: FC = () => {
           <Link to="/">Forsiden</Link>
         </li>
         <li>
-          <Link to="/video-gallery">Videoer</Link>
+          <Link to="/video">Videoer</Link>
         </li>
         <li>
           <Link to="/quiz">Quiz</Link>

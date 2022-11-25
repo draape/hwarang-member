@@ -3,12 +3,12 @@ import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
-import { getDistinctCategories } from "../utils/get-distinct-categories";
+import { getDistinctCategories } from "../../utils/get-distinct-categories";
 
-import Layout from "../components/layout/layout";
-import { FacetList } from "../components/facet-list/facet-list";
-import { Card } from "../components/card/card";
-import { Grid } from "../components/grid/grid";
+import Layout from "../../components/layout/layout";
+import { FacetList } from "../../components/facet-list/facet-list";
+import { Card } from "../../components/card/card";
+import { Grid } from "../../components/grid/grid";
 
 interface VideoGalleryProps {
   data: {
