@@ -12,7 +12,7 @@ import { Container } from "../components/container/container";
 const IndexPage = () => {
   const { user } = useAuth0();
   return (
-    <Layout>
+    <Layout title="Min side">
       <Container>
         <h1>Min side</h1>
 

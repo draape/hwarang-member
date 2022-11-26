@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { graphql } from "gatsby";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
@@ -22,8 +22,8 @@ interface CategoryProps {
   };
 }
 
-const Category: React.FC<CategoryProps> = ({ data: { category, links } }) => (
-  <Layout>
+const Category: FC<CategoryProps> = ({ data: { category, links } }) => (
+  <Layout title={category.title}>
     <h1>{category.title}</h1>
     <Grid>
       {links.nodes.map((link, i) => (
@@ -34,13 +34,11 @@ const Category: React.FC<CategoryProps> = ({ data: { category, links } }) => (
 );
 
 export const query = graphql`
-  query Category($slug: String) {
-    category: sanityCategory(slug: { current: { eq: $slug } }) {
+  query ($id: String) {
+    category: sanityCategory(id: { eq: $id }) {
       title
     }
-    links: allSanityPage(
-      filter: { category: { slug: { current: { eq: $slug } } } }
-    ) {
+    links: allSanityPage(filter: { category: { id: { eq: $id } } }) {
       nodes {
         title
         slug {

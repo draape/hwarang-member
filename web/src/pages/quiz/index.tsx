@@ -10,7 +10,7 @@ import { QuizListItem } from "../../components/quiz-list-item/quiz-list-item";
 
 const Quiz: React.FC = () => {
   return (
-    <Layout>
+    <Layout title="Quiz">
       <Container>
         <h1>Quiz</h1>
         <p>

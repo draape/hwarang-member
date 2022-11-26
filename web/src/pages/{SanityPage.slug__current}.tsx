@@ -32,11 +32,11 @@ const Page: React.FC<PageProps> = ({ data: { page } }) => {
   const image = getImage(page.image?.asset);
 
   return (
-    <Layout>
+    <Layout title={page.title}>
       {page.category && (
         <Breadcrumb
           title={page.category.title}
-          href={`/kategori/${page.category?.slug.current}`}
+          href={`/${page.category?.slug.current}`}
         />
       )}
       <h1>{page.title}</h1>
@@ -57,8 +57,8 @@ const Page: React.FC<PageProps> = ({ data: { page } }) => {
 };
 
 export const query = graphql`
-  query Page($slug: String) {
-    page: sanityPage(slug: { current: { eq: $slug } }) {
+  query Page($id: String) {
+    page: sanityPage(id: { eq: $id }) {
       title
       slug {
         current

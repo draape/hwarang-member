@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, FC } from "react";
 import { Helmet } from "react-helmet";
 
 import Header from "../header/header";
@@ -8,11 +8,16 @@ import { MenuContext } from "../../contexts/menu-context";
 import favicon from "../../images/favicon.svg";
 import "../../styles/site.scss";
 
-const Layout: React.FC = ({ children }) => {
+type LayoutProps = {
+  title: string;
+};
+
+const Layout: FC<LayoutProps> = ({ title, children }) => {
   const { isOpen } = useContext(MenuContext);
   return (
     <div className={`layout ${isOpen ? "layout--blur" : ""}`}>
       <Helmet>
+        <title>{title}</title>
         <link rel="icon" type="image/svg+xml" href={favicon} />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link

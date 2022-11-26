@@ -10,7 +10,7 @@ interface QuizPageProps {
 
 const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => {
   return (
-    <Layout>
+    <Layout title={quiz.title}>
       <Container>
         <h1>{quiz.title}</h1>
         <p>{quiz.description}</p>

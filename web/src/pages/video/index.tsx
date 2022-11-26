@@ -34,7 +34,7 @@ const VideoGallery: React.FC<VideoGalleryProps> = ({
   const onSelect = (value: string | null) => setCategory(value);
 
   return (
-    <Layout>
+    <Layout title="Videoer">
       <h1>Videoer</h1>
       <FacetList categories={categories} onSelect={onSelect} />
       <Grid>

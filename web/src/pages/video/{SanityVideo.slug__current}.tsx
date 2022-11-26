@@ -22,7 +22,7 @@ interface VideoProps {
 }
 
 const Video: FC<VideoProps> = ({ data: { video } }) => (
-  <Layout>
+  <Layout title={video.title}>
     <h1>{video.title}</h1>
     <VimeoVideo id={video.videoId} title={video.title} />
     <Container>

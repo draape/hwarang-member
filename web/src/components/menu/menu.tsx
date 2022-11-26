@@ -46,9 +46,7 @@ export const Menu: FC = () => {
         </li>
         {result.sanitySiteSettings.menu.map((item, i) => (
           <li key={i}>
-            <Link to={buildLink(item.slug.current, item.type)}>
-              {item.title}
-            </Link>
+            <Link to={`/${item.slug.current}`}>{item.title}</Link>
           </li>
         ))}
         <li>
@@ -65,5 +63,4 @@ export const Menu: FC = () => {
   );
 };
 
-const buildLink = (slug: string, type: string) =>
-  type === "SanityCategory" ? `/kategori/${slug}` : `/${slug}`;
+const buildLink = (slug: string, type: string) => `/${slug}`;
