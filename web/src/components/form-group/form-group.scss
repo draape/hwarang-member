@@ -1,0 +1,9 @@
+.form-group {
+  margin: 1.5rem 0 3rem;
+  
+  &--spaced {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

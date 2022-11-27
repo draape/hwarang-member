@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import { graphql } from "gatsby";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Layout from "../../components/layout/layout";
 import { Container } from "../../components/container/container";
+import { QuizWizard } from "../../components/quiz/quiz-wizard";
 
 interface QuizPageProps {
   data: { quiz: any };
@@ -12,33 +14,11 @@ const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => {
   return (
     <Layout title={quiz.title}>
       <Container>
-        <h1>{quiz.title}</h1>
-        <p>{quiz.description}</p>
-        {quiz.questions.map((question) =>
-          question._type === "question" ? (
-            <div>
-              <h2>{question.title}</h2>
-              <ol>
-                {question.choices.map((choice) => (
-                  <li>
-                    {choice.title} {choice.isCorrect ? "✅" : "❌"}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ) : (
-            <div>
-              <h2>{question.title}</h2>
-              <ul>
-                {question.choices.map((choice) => (
-                  <li>
-                    {choice.value} - {choice.match}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        )}
+        <QuizWizard
+          title={quiz.title}
+          description={quiz.description}
+          questions={quiz.questions}
+        />
       </Container>
     </Layout>
   );
@@ -71,4 +51,4 @@ export const query = graphql`
   }
 `;
 
-export default QuizPage;
+export default withAuthenticationRequired(QuizPage);

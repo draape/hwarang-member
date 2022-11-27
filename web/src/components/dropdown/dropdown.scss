@@ -1,0 +1,38 @@
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: $font-size--18;
+  font-weight: bold;
+
+  &:after {
+    content: "";
+    width: 0.125rem;
+    height: 0.125rem;
+    border: solid $color--black;
+    border-width: 0 0.125rem 0.125rem 0;
+    display: inline-block;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.25rem;
+    padding: 0.25rem;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  &__select {
+    all: unset;
+    border: none;
+    background-color: $color--grey;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-weight: normal;
+    border: 2px solid $color--dark-grey;
+
+    &:focus {
+      background-color: $color--light-blue;
+      border-color: $color--medium-blue;
+    }
+  }
+}
