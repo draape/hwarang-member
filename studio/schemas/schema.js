@@ -1,14 +1,14 @@
 import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
-import SiteSettings from "./site-settings";
-import Page from "./page";
+import SiteSettings from "./documents/site-settings";
+import Page from "./documents/page";
 import ExtendedImage from "./extended-image";
-import Video from "./video";
-import Category from "./category";
-import Technique from "./technique";
-import Quiz from "./quiz";
-import Player from "./player";
+import Video from "./documents/video";
+import Category from "./documents/category";
+import Technique from "./documents/technique";
+import Quiz from "./documents/quiz";
+import Player from "./documents/player";
 
 import Answer from "./objects/answer";
 import Choice from "./objects/choice";

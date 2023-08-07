@@ -31,7 +31,7 @@ export default {
       type: "array",
       validation: (Rule) =>
         Rule.min(1).error("En quiz må ha minst ett spørsmål"),
-      of: [{ type: "question" }, { type: "matchQuestion" }],
+      of: [{ type: "question" }],
     },
   ],
   preview: {

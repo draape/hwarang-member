@@ -1,3 +1,5 @@
+import { uuid } from "@sanity/uuid";
+
 export default {
   name: "choice",
   title: "Alternativ",
@@ -19,9 +21,19 @@ export default {
         }),
     },
     {
+      name: "value",
+      title: "Verdi",
+      type: "string",
+      initialValue: () => uuid(),
+      readOnly: true,
+      hidden: true,
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "isCorrect",
       title: "Riktig svar",
       type: "boolean",
+      hidden: (props) => props.type === "match-choice",
     },
   ],
 
