@@ -1,6 +1,3 @@
-import createSchema from "part:@sanity/base/schema-creator";
-import schemaTypes from "all:part:@sanity/base/schema-type";
-
 import SiteSettings from "./documents/site-settings";
 import Page from "./documents/page";
 import ExtendedImage from "./extended-image";
@@ -17,23 +14,19 @@ import MatchChoice from "./objects/match-choice";
 import MatchQuestion from "./objects/match-question";
 import Gwe from "./objects/gwe";
 
-export default createSchema({
-  name: "default",
-  types: schemaTypes.concat([
-    SiteSettings,
-    Page,
-    ExtendedImage,
-    Video,
-    Category,
-    Technique,
-    Quiz,
-    Player,
-    Answer,
-    Choice,
-    Question,
-    MatchChoice,
-    MatchQuestion,
-
-    Gwe,
-  ]),
-});
+export default [
+  SiteSettings,
+  Page,
+  ExtendedImage,
+  Video,
+  Category,
+  Technique,
+  Quiz,
+  Player,
+  Answer,
+  Choice,
+  Question,
+  MatchChoice,
+  MatchQuestion,
+  Gwe,
+];

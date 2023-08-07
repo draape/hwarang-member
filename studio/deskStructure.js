@@ -1,10 +1,8 @@
-import S from "@sanity/desk-tool/structure-builder";
-
 import { MdSettings } from "react-icons/md";
 
 const excludedTypes = ["siteSettings"];
 
-export default () =>
+export default (S) =>
   S.list()
     .title("Innhold")
     .items([

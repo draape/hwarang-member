@@ -17,7 +17,7 @@ export default {
       title: "Slug",
       type: "slug",
       options: {
-        source: (doc, options) => options.parent.title,
+        source: (_, options) => options.parent.title,
       },
       validation: (Rule) => Rule.required(),
     },
