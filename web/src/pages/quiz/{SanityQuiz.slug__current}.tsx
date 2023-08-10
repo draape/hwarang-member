@@ -11,6 +11,7 @@ interface QuizPageProps {
 }
 
 const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => {
+  console.log(quiz);
   return (
     <Layout title={quiz.title}>
       <Container>
@@ -30,21 +31,19 @@ export const query = graphql`
       title
       description
       questions {
-        ... on SanityMatchQuestion {
-          _type
+        id: _key
+        title
+        type
+        matchChoices {
           title
-          choices {
-            value
-            match
-          }
+          value
+          matchTitle
+          matchValue
         }
-        ... on SanityQuestion {
-          _type
+        choices {
           title
-          choices {
-            title
-            isCorrect
-          }
+          value
+          isCorrect
         }
       }
     }

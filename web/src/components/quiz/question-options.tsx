@@ -3,19 +3,20 @@ import { RadioButton } from "../radio-button/radio-button";
 import { FormGroup } from "../form-group/form-group";
 import { QuestionChoice } from "./quiz-wizard";
 
-type QuestionChoicesProps = {
+type QuestionOptionsProps = {
   id: string;
-  choices: Array<QuestionChoice>;
+  options: QuestionChoice[];
 };
 
-export const QuestionChoices: FC<QuestionChoicesProps> = ({ id, choices }) => (
+export const QuestionOptions: FC<QuestionOptionsProps> = ({ id, options }) => (
+  // Update context on load and on select, context should be persisted
   <FormGroup>
-    {choices.map((choice, idx) => (
+    {options.map((option, idx) => (
       <RadioButton
         key={idx}
-        label={choice.title}
+        label={option.title}
         name={id}
-        value={choice.value}
+        value={option.value}
       />
     ))}
   </FormGroup>

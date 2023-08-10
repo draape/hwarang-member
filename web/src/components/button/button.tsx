@@ -12,18 +12,20 @@ export enum ButtonTheme {
 type ButtonProps = {
   className?: string;
   theme?: ButtonTheme;
+  type: "button" | "submit";
   onClick?: () => void;
 };
 
 export const Button: FC<ButtonProps> = ({
   className,
   theme = ButtonTheme.Button,
+  type = "button",
   children,
   onClick,
 }) => (
   <button
     className={`button button--${getEnumKey(ButtonTheme, theme)} ${className}`}
-    type="button"
+    type={type}
     onClick={onClick}
   >
     {children}

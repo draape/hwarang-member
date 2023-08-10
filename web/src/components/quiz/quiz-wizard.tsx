@@ -1,11 +1,13 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState, useRef } from "react";
 import { Button } from "../button/button";
-import { QuestionStep } from "./question-step";
+import { Question } from "./question";
 
-export type Question = {
-  _type: string;
+export type SanityQuestion = {
+  id: string;
   title: string;
-  choices: Array<QuestionChoice>;
+  type: string;
+  choices: QuestionChoice[];
+  matchChoices: MatchQuestionChoice[];
 };
 
 export type QuestionChoice = {
@@ -14,50 +16,138 @@ export type QuestionChoice = {
   isCorrect: boolean;
 };
 
-export type MatchQuestion = {
-  _type: string;
-  title: string;
-  choices: Array<MatchQuestionChoice>;
-};
-
 export type MatchQuestionChoice = {
+  title: string;
   value: string;
-  match: string;
+  matchTitle: string;
+  matchValue: string;
 };
 
-type QuizWizardProps = {
+type QuizProps = {
   title: string;
   description: string;
-  questions: Array<Question | MatchQuestion>;
+  questions: SanityQuestion[];
 };
 
-export const QuizWizard: FC<QuizWizardProps> = ({
+enum QuizState {
+  Intro = 0,
+  Started = 1,
+  Summary = 2,
+}
+
+enum QuizResult {
+  Fail = 0,
+  Almost = 1,
+  Pass = 2,
+  Perfect = 3,
+}
+
+type QuizModel = {
+  result?: QuizResult;
+  score?: number;
+  values?: [{ key: string; value: string }];
+};
+
+export const QuizWizard: FC<QuizProps> = ({
   title,
   description,
   questions,
 }) => {
-  const [step, setStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [state, setState] = useState<QuizState>(QuizState.Intro);
+  const [context, setContext] = useState<QuizModel>();
+  const formRef = useRef(null);
 
-  useEffect(() => {
-    if (step === questions.length + 1) {
-      alert("hey!");
-      // Save result to Sanity
-      // Error handling -> navigate to error page
-      // Navigate to summary
+  const handleSubmit = (event) => {};
+
+  const startQuiz = () => {
+    setState(QuizState.Started);
+  };
+
+  const previous = () => {
+    if (currentStep === 0) {
+      setState(QuizState.Intro);
+      return;
     }
-  }, [step]);
+    setCurrentStep(currentStep - 1);
+  };
+
+  const next = () => {
+    if (currentStep === questions.length - 1) {
+      // score and save, needs to get the progress (how many points earned = MAX(current result - previous result, 0))
+      setContext({ score: 50, result: QuizResult.Almost });
+      setState(QuizState.Summary);
+      return;
+    }
+    setCurrentStep(currentStep + 1);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit} ref={formRef}>
       <h1>{title}</h1>
-      {step === 0 && <p>{description}</p>}
-      {questions.map(
-        (question, idx) =>
-          idx + 1 === step && <QuestionStep key={idx} question={question} />
+      {/* Extract each step as a component */}
+      {state === QuizState.Intro && (
+        <>
+          <p>{description}</p>
+          <Button onClick={startQuiz} type="button">
+            Start
+          </Button>
+        </>
       )}
-      <Button onClick={() => setStep(step + 1)}>
-        {{ 0: "Start", [questions.length]: "Fullfør" }[step] ?? "Neste"}
-      </Button>
+      {state === QuizState.Started && (
+        <>
+          {questions.map((question, idx) => (
+            <Question
+              key={idx}
+              current={idx === currentStep}
+              model={question}
+            />
+          ))}
+          <Button onClick={previous} type="button">
+            Forrige
+          </Button>
+          <Button onClick={next} type="button">
+            Neste
+          </Button>
+        </>
+      )}
+      {state === QuizState.Summary && (
+        <>
+          {context &&
+            context.result &&
+            context.score &&
+            {
+              [QuizResult.Fail]: <QuizResultFail score={context?.score} />,
+              [QuizResult.Almost]: <QuizResultAlmost score={context?.score} />,
+            }[context.result]}
+          <Button onClick={() => location.assign("/quiz")} type="button">
+            Til oversikten
+          </Button>
+        </>
+      )}
     </form>
   );
 };
+
+// Maybe not like this, but in one component
+const QuizResultFail = ({ score }) => (
+  <div>
+    <p>todo bilde</p>
+    <h2>Vi må ta en prat...</h2>
+    <p>
+      Du svarte riktig på <strong>{score}%</strong> av spørsmålene. Les deg opp
+      på temaet og prøv igjen!
+    </p>
+  </div>
+);
+
+const QuizResultAlmost = ({ score }) => (
+  <div>
+    <p>todo bilde</p>
+    <h2>Beklager, nesten!</h2>
+    <p>
+      Du svarte riktig på <strong>{score}%</strong> av spørsmålene. Les deg opp
+      på temaet og prøv igjen!
+    </p>
+  </div>
+);

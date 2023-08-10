@@ -19,7 +19,7 @@ const IndexPage = () => {
         {user && (
           <Card>
             <Profile
-              name={user.name}
+              name={user.name!}
               dateOfBirth="5. juli 1985"
               club="Holmen"
               belt="Svart belte, 5. dan"
@@ -30,7 +30,9 @@ const IndexPage = () => {
         <Card>
           <QuizLevel grade={Grade.Cup2} experience={429} nextLevel={800} />
         </Card>
-        <Button onClick={() => navigate("/quiz")}>Ta en quiz</Button>
+        <Button type="button" onClick={() => navigate("/quiz")}>
+          Ta en quiz
+        </Button>
       </Container>
     </Layout>
   );

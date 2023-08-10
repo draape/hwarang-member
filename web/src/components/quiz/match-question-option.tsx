@@ -5,23 +5,22 @@ import { MatchQuestionChoice } from "./quiz-wizard";
 
 type MatchQuestionChoicesProps = {
   id: string;
-  choices: Array<MatchQuestionChoice>;
+  choices: MatchQuestionChoice[];
 };
 
 export const MatchQuestionOptions: FC<MatchQuestionChoicesProps> = ({
   id,
   choices,
-}) => {
-  const allChoices = choices.map((choice) => ({
-    name: choice.match,
-    value: choice.match,
-  }));
-
-  return (
-    <FormGroup spaced>
-      {choices.map((choice, idx) => (
-        <Dropdown key={idx} label={choice.value} options={allChoices} />
-      ))}
-    </FormGroup>
-  );
-};
+}) => (
+  // Update context on load and on select, context should be persisted
+  <FormGroup spaced>
+    {choices.map((choice, idx) => (
+      <Dropdown
+        key={choice.value}
+        label={choice.title}
+        id={choice.value}
+        options={choices}
+      />
+    ))}
+  </FormGroup>
+);
