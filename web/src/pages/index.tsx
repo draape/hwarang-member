@@ -27,9 +27,9 @@ const IndexPage = () => {
           </Card>
         )}
 
-        <Card>
+        {/* <Card>
           <QuizLevel grade={Grade.Cup2} experience={429} nextLevel={800} />
-        </Card>
+        </Card> */}
         <Button type="button" onClick={() => navigate("/quiz")}>
           Ta en quiz
         </Button>

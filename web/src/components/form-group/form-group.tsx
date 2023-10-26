@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import cn from "classnames";
 
 type FormGroupProps = {
   spaced?: boolean;
+  children: ReactNode;
 };
 
 export const FormGroup: FC<FormGroupProps> = ({ spaced = false, children }) => (

@@ -10,12 +10,13 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border: 1px solid $color--white;
+  border-radius: 0.5rem;
   
   &:hover {
     background-color: $color--light-blue;
-    border-radius: 0.5rem;
   }
-  
+
   &__input {
     position: absolute;
     opacity: 0;
@@ -48,5 +49,9 @@
 
   &__input:checked ~ &__checkmark:after {
     display: block;
+  }
+
+  &:has(&__input:focus) {
+    border: 1px solid $color--dark-blue;
   }
 }

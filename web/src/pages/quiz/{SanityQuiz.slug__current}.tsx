@@ -4,26 +4,26 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Layout from "../../components/layout/layout";
 import { Container } from "../../components/container/container";
-import { QuizWizard } from "../../components/quiz/quiz-wizard";
+import { Quiz } from "../../components/quiz/quiz";
+import { QuizProvider } from "../../components/quiz/quiz-context";
 
 interface QuizPageProps {
   data: { quiz: any };
 }
 
-const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => {
-  console.log(quiz);
-  return (
-    <Layout title={quiz.title}>
-      <Container>
-        <QuizWizard
+const QuizPage: FC<QuizPageProps> = ({ data: { quiz } }) => (
+  <Layout title={quiz.title}>
+    <Container>
+      <QuizProvider questions={quiz.questions}>
+        <Quiz
           title={quiz.title}
           description={quiz.description}
           questions={quiz.questions}
         />
-      </Container>
-    </Layout>
-  );
-};
+      </QuizProvider>
+    </Container>
+  </Layout>
+);
 
 export const query = graphql`
   query ($id: String) {

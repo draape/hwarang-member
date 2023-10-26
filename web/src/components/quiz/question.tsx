@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import { MatchQuestionOptions } from "./match-question-option";
 import { QuestionOptions } from "./question-options";
-
-import { SanityQuestion } from "./quiz-wizard";
+import { SanityQuestion } from "./types";
 
 type QuestionProps = {
   model: SanityQuestion;

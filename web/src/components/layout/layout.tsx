@@ -1,4 +1,4 @@
-import React, { useContext, FC } from "react";
+import React, { useContext, FC, ReactNode } from "react";
 import { Helmet } from "react-helmet";
 
 import Header from "../header/header";
@@ -10,6 +10,7 @@ import "../../styles/site.scss";
 
 type LayoutProps = {
   title: string;
+  children: ReactNode;
 };
 
 const Layout: FC<LayoutProps> = ({ title, children }) => {

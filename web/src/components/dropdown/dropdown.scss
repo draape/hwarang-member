@@ -24,15 +24,14 @@
   &__select {
     all: unset;
     border: none;
-    background-color: $color--grey;
+    background-color: $color--white;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     font-weight: normal;
-    border: 2px solid $color--dark-grey;
+    border: 1px solid $color--dark-grey;
 
     &:focus {
-      background-color: $color--light-blue;
-      border-color: $color--medium-blue;
+      border-color: $color--dark-blue;
     }
   }
 }

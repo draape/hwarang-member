@@ -1,5 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
-export const Container: FC = ({ children }) => (
+type ContainerProps = {
+  children: ReactNode;
+};
+
+export const Container: FC<ContainerProps> = ({ children }) => (
   <div className="container">{children}</div>
 );

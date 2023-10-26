@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 import { getEnumKey } from "../../utils/get-enum-key";
 
@@ -13,6 +13,7 @@ type ButtonProps = {
   className?: string;
   theme?: ButtonTheme;
   type: "button" | "submit";
+  children: ReactNode;
   onClick?: () => void;
 };
 
