@@ -11,8 +11,6 @@ const sanityClient = createClient({
 export default async (event) => {
   const request = await streamToString(event.body);
 
-  // console.log("request", request);
-
   // Get the guiz from Sanity
   const questions = await sanityClient.fetch(
     `*[_type == "quiz" && slug.current == "${request.quiz}"][0] {
@@ -23,8 +21,6 @@ export default async (event) => {
       }
     }`
   );
-
-  // console.log("questions", questions);
 
   // Compare request with correct answers, give one point per correct answer
   const correctAnswersMap = questions.questions.reduce((map, question) => {
@@ -44,16 +40,6 @@ export default async (event) => {
   // Find correct answers for the given answers
   const correctAnswers = request.answers
     .map((answer) => {
-      if (answer.values) {
-        return answer.values.map((matchAnswer) => {
-          const correct = correctAnswersMap[matchAnswer.id];
-          return {
-            id: matchAnswer.id,
-            value: matchAnswer.value,
-            isCorrect: matchAnswer.value === correct,
-          };
-        });
-      }
       const correct = correctAnswersMap[answer.id];
       return {
         id: answer.id,

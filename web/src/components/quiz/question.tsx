@@ -17,9 +17,7 @@ export const Question: FC<QuestionProps> = ({ model, current }) =>
           "single-choice": (
             <QuestionOptions id={model.id} options={model.choices} />
           ),
-          "match-choice": (
-            <MatchQuestionOptions id={model.id} choices={model.matchChoices} />
-          ),
+          "match-choice": <MatchQuestionOptions choices={model.matchChoices} />,
         }[model.type]
       }
     </div>

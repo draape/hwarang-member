@@ -23,7 +23,7 @@ export const Profile: FC<ProfileProps> = ({
       </div>
     </header>
 
-    <div className="profile__details">
+    {/* <div className="profile__details">
       <span>
         <strong>Klubb:</strong> {club}
       </span>
@@ -34,6 +34,6 @@ export const Profile: FC<ProfileProps> = ({
     <footer className="profile__actions">
       <Link href="#" text="Rediger profil" />
       <Link href="#" text="Endre passord" />
-    </footer>
+    </footer> */}
   </article>
 );

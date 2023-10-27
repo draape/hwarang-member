@@ -4,6 +4,7 @@ import {
   useLocalStorage,
   useLocalStorageWithReducer,
 } from "../../utils/use-local-storage";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const LS_KEY_STATE = "quiz_state";
 const LS_KEY_CURRENT_STEP = "quiz_current_step";
@@ -16,13 +17,13 @@ type QuizModel = {
   currentStep: number;
   score?: number;
   result?: QuizResult;
-  answers?: Answer[];
+  answers?: { id; value }[];
 };
 
 type QuizDispatchContextType = {
   next: () => void;
   previous: () => void;
-  save: (answer?: Answer) => void;
+  save: ({ id, value }) => void;
   submit: () => void;
 };
 
@@ -53,7 +54,7 @@ const answerReducer = (state, action) => {
         if (answer.id === action.answer.id) {
           const updatedAnswer = {
             ...answer,
-            values: [...answer.values, action.answer.values],
+            value: action.answer.value,
           };
 
           return updatedAnswer;
@@ -67,6 +68,8 @@ const answerReducer = (state, action) => {
 };
 
 export const QuizProvider = ({ questions, children }) => {
+  const { user } = useAuth0();
+
   const [state, setState] = useLocalStorage(LS_KEY_STATE, QuizState.Intro);
   const [currentStep, setCurrentStep] = useLocalStorage(LS_KEY_CURRENT_STEP, 0);
   const [score, setScore] = useLocalStorage(LS_KEY_SCORE, undefined);
@@ -101,9 +104,9 @@ export const QuizProvider = ({ questions, children }) => {
     evaluate();
   };
 
-  const save = (answer?: Answer) => {
-    if (answer) {
-      dispatchAnswer({ type: "SAVE_ANSWER", answer: answer });
+  const save = ({ id, value }) => {
+    if (id && value) {
+      dispatchAnswer({ type: "SAVE_ANSWER", answer: { id, value } });
     }
   };
 
@@ -125,6 +128,10 @@ export const QuizProvider = ({ questions, children }) => {
       body: JSON.stringify({
         quiz: "teoriprove-dangradering",
         answers: answers,
+        user: {
+          name: user.name,
+          email: user.email,
+        },
       }),
       method: "post",
       headers: new Headers({ "content-type": "application/json" }),

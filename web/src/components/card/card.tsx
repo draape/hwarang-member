@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { Link } from "gatsby";
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image";
 
@@ -8,6 +8,7 @@ type CardProps = {
   subtitle?: string;
   image?: IGatsbyImageData;
   imageAlt?: string;
+  children: ReactNode;
 };
 
 export const Card: FC<CardProps> = ({
