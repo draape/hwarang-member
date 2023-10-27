@@ -6,7 +6,6 @@ export const useLocalStorage = (key: string, initialValue: any) => {
 
   useEffect(() => {
     if (state !== initialValue) {
-      console.log("updating local storage with", key, state);
       localStorage.setItem(key, JSON.stringify(state));
     }
   }, [key, state]);

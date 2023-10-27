@@ -49,8 +49,6 @@ export default async (event) => {
     })
     .flat();
 
-  console.log(JSON.stringify(correctAnswersMap, null, 2));
-
   const questionCount = Object.keys(correctAnswersMap).length;
   const correctCount = correctAnswers.filter((a) => a.isCorrect).length;
 
@@ -59,8 +57,6 @@ export default async (event) => {
   // Get the diff (potential new points) from the previous best score
 
   // Save the new results (answers?, score, diff)
-
-  // console.log(correctCount, correctAnswersMap.length);
 
   return new Response(
     JSON.stringify({

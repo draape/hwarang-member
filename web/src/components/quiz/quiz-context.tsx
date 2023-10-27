@@ -124,7 +124,7 @@ export const QuizProvider = ({ questions, children }) => {
 
   const evaluate = () => {
     setState(QuizState.Scoring);
-    fetch("http://localhost:8888/.netlify/functions/score", {
+    fetch("/.netlify/functions/score", {
       body: JSON.stringify({
         quiz: "teoriprove-dangradering",
         answers: answers,

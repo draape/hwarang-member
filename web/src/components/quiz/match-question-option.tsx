@@ -18,15 +18,6 @@ export const MatchQuestionOptions: FC<MatchQuestionChoicesProps> = ({
 
   shuffledOptions.find((option) => answers.indexOf(option));
 
-  // const selectedValue = answers.map(
-  //   (answer) =>
-  //     shuffledOptions.find((option) => option.value === answer.id) ?? null
-  // );
-
-  console.log("answers", answers);
-  console.log("choices", choices);
-  // console.log("selected", selectedValue);
-
   return (
     <FormGroup spaced>
       {choices.map((choice) => {
