@@ -142,7 +142,6 @@ export const QuizProvider = ({ questions, children }) => {
         setResult(mapResult(response.score));
         setState(QuizState.Summary);
       });
-    // score and save, needs to get the progress (how many points earned = MAX(current result - previous result, 0))
   };
 
   return (

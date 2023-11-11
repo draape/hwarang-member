@@ -3,17 +3,19 @@ import { createClient } from "@sanity/client";
 const sanityClient = createClient({
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
   dataset: process.env.GATSBY_SANITY_DATASET,
-  token: process.env.GATSBY_SANITY_TOKEN,
+  token: process.env.SANITY_WRITE_TOKEN,
   apiVersion: "2021-03-25",
   useCdn: false,
 });
 
 export default async (event) => {
   const request = await streamToString(event.body);
+  console.log("Received request", request);
 
   // Get the guiz from Sanity
-  const questions = await sanityClient.fetch(
+  const quiz = await sanityClient.fetch(
     `*[_type == "quiz" && slug.current == "${request.quiz}"][0] {
+      _id,
       questions [] {
         _key,
         choices,
@@ -23,7 +25,7 @@ export default async (event) => {
   );
 
   // Compare request with correct answers, give one point per correct answer
-  const correctAnswersMap = questions.questions.reduce((map, question) => {
+  const correctAnswersMap = quiz.questions.reduce((map, question) => {
     const correctChoice = question.choices?.find((choice) => choice.isCorrect);
     if (correctChoice) {
       map[question._key] = correctChoice.value;
@@ -51,19 +53,17 @@ export default async (event) => {
 
   const questionCount = Object.keys(correctAnswersMap).length;
   const correctCount = correctAnswers.filter((a) => a.isCorrect).length;
+  const score = Math.ceil((correctCount / questionCount) * 100) ?? 0;
 
-  // Get previous answers from Sanity
-
-  // Get the diff (potential new points) from the previous best score
-
-  // Save the new results (answers?, score, diff)
+  await createUser(request.user);
+  await addAttempt(quiz._id, request.user, score, correctAnswers);
 
   return new Response(
     JSON.stringify({
       questions: questionCount,
       correct: correctCount,
       percentage: correctCount / questionCount,
-      score: Math.ceil((correctCount / questionCount) * 100) ?? 0,
+      score: score,
     })
   );
 };
@@ -79,3 +79,29 @@ async function streamToString(readableStream) {
 
   return JSON.parse(result);
 }
+
+const createUser = async (user: { email: string; name: string }) => {
+  console.log("Create user", user);
+  await sanityClient.createIfNotExists({
+    _id: user.email.replace("@", "__"),
+    _type: "player",
+    name: user.name,
+  });
+};
+
+const addAttempt = async (quizId, user, score, answers) => {
+  await sanityClient
+    .patch(user.email.replace("@", "__"))
+    .setIfMissing({ quizAttempts: [] })
+    .insert("after", "quizAttempts[-1]", [
+      {
+        quiz: { _ref: quizId },
+        submittedAt: new Date(),
+        score: score,
+        answers: answers,
+      },
+    ])
+    .commit({
+      autoGenerateArrayKeys: true,
+    });
+};

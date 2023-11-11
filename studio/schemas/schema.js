@@ -5,9 +5,8 @@ import Video from "./documents/video";
 import Category from "./documents/category";
 import Technique from "./documents/technique";
 import Quiz from "./documents/quiz";
-import Player from "./documents/player";
+import { player, quizAttempts, answer } from "./documents/player";
 
-import Answer from "./objects/answer";
 import Choice from "./objects/choice";
 import Question from "./objects/question";
 import MatchChoice from "./objects/match-choice";
@@ -22,11 +21,13 @@ export default [
   Category,
   Technique,
   Quiz,
-  Player,
-  Answer,
+  player,
   Choice,
   Question,
   MatchChoice,
   MatchQuestion,
   Gwe,
+
+  quizAttempts,
+  answer,
 ];
