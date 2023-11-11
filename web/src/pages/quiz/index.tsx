@@ -3,7 +3,7 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Layout from "../../components/layout/layout";
 // import { Card } from "../../components/card/card";
-import { Grade, QuizLevel } from "../../components/quiz-level/quiz-level";
+import { Grade } from "../../components/quiz-level/quiz-level";
 import { Container } from "../../components/container/container";
 import { List } from "../../components/list/list";
 import { QuizListItem } from "../../components/quiz-list-item/quiz-list-item";
@@ -29,7 +29,7 @@ const Quiz: React.FC = ({ data }) => {
               key={quiz._id}
               name={quiz.title}
               questions={quiz.questions.length}
-              grade={Grade.Cup3}
+              grade={Grade.Dan1}
               url={`/quiz/${quiz.slug.current}`}
             />
           ))}
